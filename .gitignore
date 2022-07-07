@@ -36,3 +36,6 @@ application-personal.yml
 
 ### VS Code ###
 .vscode/
+
+### oauth ###
+application-oauth2.yml
