@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import project.em_blog.config.auth.SessionUser;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,23 +12,23 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class BaseController {
 
-//    private final HttpSession httpSession;
-//
-//    @GetMapping("/")
-//    public String index(Model model){
-//
-//        SessionUser user = (SessionUser) httpSession.getAttribute("user");
-//
-//        if(user != null) {
-//            model.addAttribute("userName", user.getName());
-//            model.addAttribute("userImg", user.getPicture());
-//        }
-//
-//        return "index";
-//    }
+    private final HttpSession httpSession;
 
     @GetMapping("/")
-    public String index(Model model) {
+    public String index(Model model){
+
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+
+        if(user != null) {
+            model.addAttribute("userName", user.getName());
+            model.addAttribute("userImg", user.getPicture());
+        }
+
         return "index";
     }
+
+//    @GetMapping("/")
+//    public String index(Model model) {
+//        return "index";
+//    }
 }
